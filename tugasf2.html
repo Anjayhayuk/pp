@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body, *{
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+        .main{
+            background-color: aqua;
+            border: 3px solid blueviolet;
+            border-radius: 10px;
+            width: 235px;
+            height: 80px;
+            box-shadow: 1px 2px 1px 2px black;
+            display: flex;
+        }
+       .lb{
+            margin-top:10px;
+            background-color: aqua;
+            border: 2px solid blueviolet;
+            border-radius: 2px;
+            color: blue;
+            background-color: yellow;
+            box-shadow: 1px 1px 1px 1px blueviolet;
+       }
+       .list{
+        color: blue;
+       }
+       .total{
+        margin-top: 10px;
+        color: blue;
+       }
+       option{
+        color: white;
+       }
+       .op{
+        background-color: blueviolet;
+       }
+       .op2{
+        background-color: green;
+       }
+       .op3{
+        background-color: red;
+       }
+       .op4{
+        background-color: blue;
+       }
+       .jumlah{
+        background-color: yellow;
+        border: 2px blueviolet solid;
+        border-radius: 2px;
+        color: blue;
+        box-shadow: 1px 1px 1px 1px blueviolet;
+       }
+       button{
+        background-color: green;
+        border: 3px solid blueviolet;
+        border-radius: 2px;
+        color: white;
+        box-shadow: 1px 1px 1px 1px blueviolet;
+       }
+button:hover{
+    background-color: yellow;
+    color: blue;
+    transition: 0.2s;
+}
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="list">
+            Barang : 
+        <select id="listbarang" class="lb">
+            <option class="op" value="Buku">Buku</option>
+            <option class="op2" value="Tas">Tas</option>
+            <option class="op3" value="Pensil">Pensil</option>
+            <option class="op4" value="Penghapus">Penghapus</option>
+        </select>
+        <button id="tambah" onclick="cek_barang()">Cek Barang</button>
+        </div>
+        <div class="total">
+            <p> Jumlah : </p> 
+            <input type="text" id="jumlah" class="jumlah">
+        </div>
+        <div id="barang" class="barang"></div>
+        <div id="total" class="total"></div>
+    </div>
+    <script>
+        let harga;
+        let nama_brg;
+        let ket="";
+        let jumlah=0;
+        let total=0;
+        let subtotal=0;
+        
+        function cek_barang(){
+            let nama=document.getElementById("listbarang").value;
+            switch(nama){
+                case"Buku" :
+                    harga=10000 ;
+                    nama_brg="Buku";
+                    break;
+                case "Tas" :
+                    harga=50000;
+                    nama_brg="Tas"
+                    break;
+                case"Pensil" :
+                    harga=5000;
+                    nama_brg="Pensil"
+                case "Penghapus" :
+                    harga=1500;
+                    nama_brg="Penghapus";
+                    break;
+            }
+            jumlah= document.getElementById("jumlah").value;
+            subtotal = jumlah * harga;
+            total = total + subtotal;
+            ket = ket + nama_brg + ":" + harga + "*" + jumlah + "=" +subtotal + "<br>";
+            document.getElementById("barang").innerHTML = ket;
+            document.getElementById("total").innerHTML = "Total belanja =" + total;
+        }
+    </script>
+</body>
+</html>
